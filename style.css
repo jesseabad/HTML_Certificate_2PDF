@@ -9,7 +9,7 @@
     border:1px red dashed;
     margin-left:auto;
     margin-right:auto;
-    background-image: url("img/mao-acs-cert.png");
+    background-image: url("img/mao-acs-cert-72dpi.png");
     background-size: 100%;
     background-position: 0 0;
     padding:0px;
@@ -23,8 +23,8 @@
 
 #name{
     position:relative;
-    left: 210px;
-    top:380px;
+    left: 180px;
+    top:340px;
     width:700px;
     text-align:center;
     font-family:Georgia, 'Times New Roman', Times, serif;
@@ -48,3 +48,10 @@
     border:0px;
 }
 
+#create_pdf{
+    position:absolute;
+    top:50px;
+    left:50px;
+
+    z-index:10;
+}
