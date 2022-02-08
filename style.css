@@ -1,0 +1,50 @@
+
+.cert{
+   
+    width:1169px;
+    height:827px;
+    position:relative;
+    border:1px #333 solid;
+    text-align: center;
+    border:1px red dashed;
+    margin-left:auto;
+    margin-right:auto;
+    background-image: url("img/mao-acs-cert.png");
+    background-size: 100%;
+    background-position: 0 0;
+    padding:0px;
+}
+
+.cert img{
+    width:1169px;
+    height: auto;
+}
+
+
+#name{
+    position:relative;
+    left: 210px;
+    top:380px;
+    width:700px;
+    text-align:center;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+   }
+.big-font{
+    font-size:36pt;
+}
+
+.small-font{
+    font-size:24pt;
+}
+
+#date{
+
+ font-size:22pt;
+ font-family:Arial, Helvetica, sans-serif;
+ text-transform: uppercase;
+}
+
+.no-border{
+    border:0px;
+}
+
