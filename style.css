@@ -1,30 +1,32 @@
 
 .cert{
    
-    width:1169px;
-    height:827px;
+    width:auto;
+    height:auto;
     position:relative;
     border:1px #333 solid;
     text-align: center;
     border:1px red dashed;
     margin-left:auto;
     margin-right:auto;
-    background-image: url("img/mao-acs-cert-72dpi.png");
+
     background-size: 100%;
     background-position: 0 0;
     padding:0px;
+    text-align: left;
 }
 
 .cert img{
-    width:1169px;
-    height: auto;
+    margin:0px;
+    width:70%;
+    height:auto;
 }
 
 
 #name{
-    position:relative;
-    left: 180px;
-    top:340px;
+    position:absolute;
+    left: 220px;
+    top:334px;
     width:700px;
     text-align:center;
     font-family:Georgia, 'Times New Roman', Times, serif;
@@ -38,8 +40,10 @@
 }
 
 #date{
-
- font-size:22pt;
+position:absolute;
+left: 280px;
+top:651px;
+ font-size:18pt;
  font-family:Arial, Helvetica, sans-serif;
  text-transform: uppercase;
 }
@@ -52,6 +56,5 @@
     position:absolute;
     top:50px;
     left:50px;
-
     z-index:10;
 }

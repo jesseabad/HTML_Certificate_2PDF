@@ -1,8 +1,8 @@
 $(document).ready(function () {  
     var cert = $('.cert'),  
-    cache_width = cert.width(),  
-    a4 = [841.89, 595.28]; // for a4 size paper width and height  
-
+    cache_width = cert.width(),
+    a4=[1158, 816]
+    console.log("cache_width:"+cache_width);
     addDate();
 
     $('#name').focus(function(){
@@ -25,28 +25,30 @@ $(document).ready(function () {
     function createPDF() {  
         getCanvas().then(function (canvas) {  
             var  
-             img = canvas.toDataURL("image/png"),  
+             img = canvas.toDataURL("image/jpg"),  
              doc = new jsPDF({  
                 orientation: "landscape",
                  unit: 'px',  
-                 format: 'a4'
+                 format: 'letter'
                 
              });  
              doc.setProperties({
                 title: 'MAO ACS - Certificate of Completion',
                 subject: 'MAO ACS - Certificate of Completion',
                 author: 'OSD MAO',
-                keywords: 'certificate',
+                keywords: 'Certificate',
                 creator: 'OSD MAO'
             });
-            doc.addImage(img, 'JPEG', 20, 20);  
-            doc.save('Bhavdip-html-to-pdf.pdf');  
+            doc.addImage(img, 'PNG',0, 0,849,474,'img','SLOW');  //8.5in x 11in 120ppi
+            doc.save('acs-certificate.pdf');  
             cert.width(cache_width);  
+           
         });  
     }  
       
     function getCanvas() {  
-        cert.width((a4[0] * 1.33333) - 80);//.css('max-width', 'none'); 
+     // cert.width((a4[0] * 1.333) - 80).css('max-width', 'none'); 
+      
         return html2canvas(cert, {  
             imageTimeout: 1000,  
             removeContainer: true  
