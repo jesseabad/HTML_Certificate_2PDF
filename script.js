@@ -1,7 +1,7 @@
 $(document).ready(function () {  
     var cert = $('.cert'),  
     cache_width = cert.width(),
-    a4=[1158, 816]
+    a4=[1054, 816]
     console.log("cache_width:"+cache_width);
     addDate();
 
@@ -25,7 +25,7 @@ $(document).ready(function () {
     function createPDF() {  
         getCanvas().then(function (canvas) {  
             var  
-             img = canvas.toDataURL("image/jpg"),  
+             img = canvas.toDataURL("image/png"),  
              doc = new jsPDF({  
                 orientation: "landscape",
                  unit: 'px',  
@@ -39,7 +39,7 @@ $(document).ready(function () {
                 keywords: 'Certificate',
                 creator: 'OSD MAO'
             });
-            doc.addImage(img, 'PNG',0, 0,849,474,'img','SLOW');  //8.5in x 11in 120ppi
+            doc.addImage(img, 'png',0, 0,612,474);  //8.5in x 11in 120ppi
             doc.save('acs-certificate.pdf');  
             cert.width(cache_width);  
            
@@ -60,9 +60,9 @@ $(document).ready(function () {
         var dd = String(today.getDate()).padStart(2, '0');
         var mm = today.toLocaleString('default',{month:'short'}) //String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
-
+        var str = "DATE: ";
         today = mm + '/' + dd + '/' + yyyy;
-        $("#date").html(today)
+        $("#date").html(str+today)
     }
 
 

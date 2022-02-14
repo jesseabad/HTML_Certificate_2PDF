@@ -1,51 +1,75 @@
 
 .cert{
    
-    width:auto;
-    height:auto;
-    position:relative;
+    width:1054px;
+    height:816px;
     border:1px #333 solid;
     text-align: center;
     border:1px red dashed;
     margin-left:auto;
     margin-right:auto;
-
-    background-size: 100%;
-    background-position: 0 0;
-    padding:0px;
-    text-align: left;
+    padding-top:50px;
+    padding-left:50px;
+    padding-right:70px;
+    display:flex;
+    flex-direction: column;
+    justify-items: center;
 }
 
-.cert img{
-    margin:0px;
-    width:70%;
+.cert >*{
+    margin-bottom:50px;
+
+}
+.cert>h2{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:32pt;
+    text-align:center;
+}
+.cert>img.cs-icon{
+    width:130px;
     height:auto;
+    align-self: center;
 }
 
+.cert p{
+    margin:0px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 20pt;
+    line-height:35pt;
+}
+.cert .course{
+    font-weight: bold;
+    color:#0b553c;
+}
 
 #name{
-    position:absolute;
-    left: 220px;
-    top:334px;
-    width:700px;
     text-align:center;
     font-family:Georgia, 'Times New Roman', Times, serif;
    }
-.big-font{
+.footer{
+    border:red 1px dashed;
+    display:flex;
+    margin-top:120px;
+}
+#date{
+    font-size:18pt;
+    font-family:Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+   
+   }
+
+#buffy{
+    width:200px;
+    height:auto;
+    margin-left:auto;
+}
+
+   .big-font{
     font-size:36pt;
 }
 
 .small-font{
     font-size:24pt;
-}
-
-#date{
-position:absolute;
-left: 280px;
-top:651px;
- font-size:18pt;
- font-family:Arial, Helvetica, sans-serif;
- text-transform: uppercase;
 }
 
 .no-border{
