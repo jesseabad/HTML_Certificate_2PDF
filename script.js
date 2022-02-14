@@ -17,12 +17,17 @@ $(document).ready(function () {
 
 
     $('#create_pdf').on('click', function () {  
-        $('body').scrollTop(0);  
-        createPDF();  
+  
+       if( checkName()){
+        $(window).scrollTop(0).ready(
+            function(){createPDF();  }
+        );  
+       };
     });
 
     
     function createPDF() {  
+        
         getCanvas().then(function (canvas) {  
             var  
              img = canvas.toDataURL("image/png"),  
@@ -53,6 +58,8 @@ $(document).ready(function () {
             imageTimeout: 1000,  
             removeContainer: true  
         });  
+
+
     }
 
     function addDate(){
@@ -65,7 +72,13 @@ $(document).ready(function () {
         $("#date").html(str+today)
     }
 
-
-
-
+    function checkName(){
+        var name= ($("#name").val())
+       if(name=="Type your name here"){
+         confirm("Alert: Please type your name.") ;
+         return false;
+       }else {
+           return true;
+       }
+    }
 });     
