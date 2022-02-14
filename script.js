@@ -44,7 +44,7 @@ $(document).ready(function () {
                 keywords: 'Certificate',
                 creator: 'OSD MAO'
             });
-            doc.addImage(img, 'png',0, 0,612,474);  //8.5in x 11in 120ppi
+            doc.addImage(img, 'PNG',0, 0,612,474);  //8.5in x 11in 120ppi
             doc.save('acs-certificate.pdf');  
             cert.width(cache_width);  
            
