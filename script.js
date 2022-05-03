@@ -2,8 +2,10 @@ $(document).ready(function () {
     var cert = $('.cert'),  
     cache_width = cert.width(),
     a4=[1054, 816]
-    console.log("cache_width:"+cache_width);
-    addDate();
+    //console.log("cache_width:"+cache_width);
+    saveDateOfCompletion(addDate);
+  
+    
 
     $('#name').focus(function(){
         $(this).val("");
@@ -17,7 +19,7 @@ $(document).ready(function () {
 
 
     $('#create_pdf').on('click', function () {  
-  
+        
        if( checkName()){
         $(window).scrollTop(0).ready(
             function(){createPDF();  }
@@ -62,15 +64,41 @@ $(document).ready(function () {
 
     }
 
-    function addDate(){
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = today.toLocaleString('default',{month:'short'}) //String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = today.getFullYear();
-        var str = "DATE: ";
-        today = mm + '/' + dd + '/' + yyyy;
-        $("#date").html(str+today)
+    function saveDateOfCompletion(func){
+     
+        var doc = localStorage.getItem("date_of_completion");
+        console.log(doc);
+
+        if ( doc==null || doc==undefined) {
+            // Store
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = today.toLocaleString('default',{month:'short'}) //String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+            today = mm + '/' + dd + '/' + yyyy;
+            localStorage.setItem("date_of_completion",today);
+            console.log("today:"+today);
+          }else{
+              //console.log("may laman na");
+          }
+
+          func();
     }
+
+    function eraseDoc(){
+        localStorage.clear();
+       console.log( localStorage.getItem("date_of_completion"))
+
+    }
+    
+
+    function addDate(func){
+
+        var doc = localStorage.getItem("date_of_completion");
+        var str = "DATE: ";
+        $("#date").html(str+doc);
+    }
+
 
     function checkName(){
         var name= ($("#name").val())
