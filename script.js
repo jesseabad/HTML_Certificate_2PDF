@@ -1,12 +1,12 @@
 $(document).ready(function () {  
-    var cert = $('.cert'),  
+    var cert = $('.cont'),  
     cache_width = cert.width(),
-    a4=[1054, 816]
+    a4=[1054, 816],
+    title= ($("title").text().replaceAll(" ","_"));
+   
     //console.log("cache_width:"+cache_width);
     saveDateOfCompletion(addDate);
-  
     
-
     $('#name').focus(function(){
         $(this).val("");
         $(this).removeClass("small-font");
@@ -17,7 +17,6 @@ $(document).ready(function () {
         $(this).addClass('no-border')
     });
 
-
     $('#create_pdf').on('click', function () {  
         
        if( checkName()){
@@ -26,17 +25,16 @@ $(document).ready(function () {
         );  
        };
     });
-
     
     function createPDF() {  
-        
         getCanvas().then(function (canvas) {  
             var  
              img = canvas.toDataURL("image/png"),  
              doc = new jsPDF({  
                 orientation: "landscape",
                  unit: 'px',  
-                 format: 'letter'
+                 format: 'letter',
+                 compress:false
                 
              });  
              doc.setProperties({
@@ -46,8 +44,8 @@ $(document).ready(function () {
                 keywords: 'Certificate',
                 creator: 'OSD MAO'
             });
-            doc.addImage(img, 'PNG',0, 0,612,474);  //8.5in x 11in 120ppi
-            doc.save('acs-certificate.pdf');  
+            doc.addImage(img, 'PNG',0, 0,612,473,'NONE');  //8.5in x 11in 120ppi| 
+            doc.save(title+'.pdf');  
             cert.width(cache_width);  
            
         });  
@@ -60,8 +58,6 @@ $(document).ready(function () {
             imageTimeout: 1000,  
             removeContainer: true  
         });  
-
-
     }
 
     function saveDateOfCompletion(func){
@@ -75,11 +71,11 @@ $(document).ready(function () {
             var dd = String(today.getDate()).padStart(2, '0');
             var mm = today.toLocaleString('default',{month:'short'}) //String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
             var yyyy = today.getFullYear();
-            today = mm + '/' + dd + '/' + yyyy;
+            today = mm + ' ' + dd + ', ' + yyyy;
             localStorage.setItem("date_of_completion",today);
-            console.log("today:"+today);
+            //console.log("today:"+today);
           }else{
-              //console.log("may laman na");
+             // console.log("may laman na");
           }
 
           func();
@@ -92,10 +88,10 @@ $(document).ready(function () {
     }
     
 
-    function addDate(func){
+    function addDate(){
 
         var doc = localStorage.getItem("date_of_completion");
-        var str = "DATE: ";
+        var str = "Date: ";
         $("#date").html(str+doc);
     }
 
@@ -109,4 +105,6 @@ $(document).ready(function () {
            return true;
        }
     }
+
+
 });     
